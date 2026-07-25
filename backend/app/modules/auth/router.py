@@ -3,7 +3,11 @@ from neo4j import Session
 
 from app.core.database import get_session
 from app.modules.auth.schemas import LoginRequest, TokenResponse
-from app.modules.auth.security import create_access_token, hash_password, verify_password
+from app.modules.auth.security import (
+    create_access_token,
+    hash_password,
+    verify_password,
+)
 from app.modules.users.models import UserCreate, UserPublic
 from app.modules.users.repository import create_user, get_user_by_email
 from app.shared.exceptions import EmailAlreadyRegisteredError, InvalidCredentialsError
