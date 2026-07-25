@@ -394,7 +394,14 @@ uv run uvicorn app.main:app --reload
 1. `Cmd/Ctrl+Shift+P` → **Python: Select Interpreter**
 2. Pick `backend/.venv/bin/python`
 
-This is already preconfigured in `.vscode/settings.json`, so VS Code should pick it up automatically.
+This is already preconfigured in `.vscode/settings.json`, so VS Code should pick it up automatically — new integrated terminals will auto-activate the venv.
+
+To activate it manually in any terminal:
+
+```bash
+cd backend
+source .venv/bin/activate
+```
 
 ---
 
