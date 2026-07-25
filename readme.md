@@ -347,6 +347,58 @@ Neo4j
 
 ---
 
+# Local Development
+
+## Requirements
+
+* Docker & Docker Compose
+* [uv](https://docs.astral.sh/uv/) (Python dependency manager)
+* Node.js 20+
+
+---
+
+## Run everything with Docker Compose
+
+```bash
+docker compose up -d
+```
+
+* Frontend → http://localhost:5173
+* Backend → http://localhost:8000/health
+* Neo4j Browser → http://localhost:7474 (user: `neo4j`, password: `quotegraph123`)
+
+Stop everything:
+
+```bash
+docker compose down
+```
+
+---
+
+## Backend (without Docker)
+
+```bash
+cd backend
+uv sync
+uv run uvicorn app.main:app --reload
+```
+
+* `uv sync` — install dependencies from `uv.lock`
+* `uv add <package>` — add a new dependency
+* `uv run <command>` — run a command inside the project's virtualenv
+
+---
+
+## Frontend (without Docker)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
 # Goals
 
 The purpose of this project is to:
