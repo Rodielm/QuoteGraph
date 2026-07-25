@@ -389,12 +389,14 @@ uv run uvicorn app.main:app --reload
 
 ### VS Code setup
 
-`uv sync` creates the virtualenv at `backend/.venv`. Open the **repository root** as the workspace, then:
+Open `quotegraph.code-workspace` (not the plain folder) so `backend/` and `frontend/` each load their own settings and extension recommendations.
+
+`uv sync` creates the virtualenv at `backend/.venv`, already picked up via `backend/.vscode/settings.json`. If VS Code doesn't select it automatically:
 
 1. `Cmd/Ctrl+Shift+P` → **Python: Select Interpreter**
-2. Pick `backend/.venv/bin/python`
+2. Pick `.venv/bin/python` (relative to the `backend` folder)
 
-This is already preconfigured in `.vscode/settings.json`, so VS Code should pick it up automatically — new integrated terminals will auto-activate the venv.
+New integrated terminals opened in the `backend` folder will auto-activate the venv.
 
 To activate it manually in any terminal:
 

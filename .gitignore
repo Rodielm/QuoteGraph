@@ -21,7 +21,7 @@ docker/**/*.log
 
 # OS / Editor
 .DS_Store
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
+**/.vscode/*
+!**/.vscode/settings.json
+!**/.vscode/extensions.json
 .idea/
