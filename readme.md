@@ -387,6 +387,15 @@ uv run uvicorn app.main:app --reload
 * `uv add <package>` — add a new dependency
 * `uv run <command>` — run a command inside the project's virtualenv
 
+### VS Code setup
+
+`uv sync` creates the virtualenv at `backend/.venv`. Open the **repository root** as the workspace, then:
+
+1. `Cmd/Ctrl+Shift+P` → **Python: Select Interpreter**
+2. Pick `backend/.venv/bin/python`
+
+This is already preconfigured in `.vscode/settings.json`, so VS Code should pick it up automatically.
+
 ---
 
 ## Frontend (without Docker)
