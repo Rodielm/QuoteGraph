@@ -13,7 +13,11 @@ from pydantic import BaseModel
 
 from app.core.database import get_driver
 
-QUOTABLE_BASE_URL = "https://api.quotable.io"
+# NOTE: Using http instead of https as a temporary workaround —
+# api.quotable.io's TLS certificate is currently expired server-side
+# (confirmed 2026-07-25, not a local/client issue). Revert to https
+# once the provider renews it.
+QUOTABLE_BASE_URL = "http://api.quotable.io"
 
 
 class QuotableQuote(BaseModel):
