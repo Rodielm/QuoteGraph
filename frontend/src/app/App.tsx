@@ -1,10 +1,9 @@
+import { RouterProvider } from "react-router-dom";
+
+import { router } from "@/app/router";
+
 function App() {
-  return (
-    <main>
-      <h1>QuoteGraph</h1>
-      <p>Explore ideas, not just quotes.</p>
-    </main>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
