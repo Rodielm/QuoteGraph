@@ -1,7 +1,7 @@
 """Seed Neo4j with quotes from the Quotable API (https://github.com/lukePeavey/quotable).
 
-Usage:
-    uv run python scripts/import_quotable.py [--pages N] [--limit N]
+Usage (from the backend/ directory):
+    uv run python -m scripts.import_quotable [--pages N] [--limit N]
 """
 
 import argparse
