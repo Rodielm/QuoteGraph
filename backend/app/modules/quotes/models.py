@@ -19,3 +19,7 @@ class QuoteListResponse(BaseModel):
     limit: int
     totalCount: int
     totalPages: int
+
+
+class FavoriteStatus(BaseModel):
+    isFavorited: bool

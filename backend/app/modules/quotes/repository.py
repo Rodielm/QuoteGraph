@@ -24,7 +24,7 @@ def _build_match_clause(author_slug: str | None, tag: str | None, q: str | None)
     return match_clause, params
 
 
-def _to_quote_public(record) -> QuotePublic:
+def to_quote_public(record) -> QuotePublic:
     return QuotePublic(
         id=record["id"],
         text=record["text"],
