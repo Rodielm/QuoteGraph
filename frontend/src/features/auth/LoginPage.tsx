@@ -13,7 +13,7 @@ export function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleSubmit(event: React.FormEvent) {
+  async function handleSubmit(event: React.SubmitEvent) {
     event.preventDefault();
     try {
       await login(email, password);

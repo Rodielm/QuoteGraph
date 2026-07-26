@@ -14,9 +14,10 @@ from app.shared.exceptions import EmailAlreadyRegisteredError, InvalidCredential
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
+DependsSession = Depends(get_session)
 
 @router.post("/register", response_model=UserPublic, status_code=201)
-def register(payload: UserCreate, session: Session = Depends(get_session)) -> UserPublic:
+def register(payload: UserCreate, session: Session = DependsSession) -> UserPublic:
     if get_user_by_email(session, payload.email) is not None:
         raise EmailAlreadyRegisteredError()
 
@@ -25,7 +26,7 @@ def register(payload: UserCreate, session: Session = Depends(get_session)) -> Us
 
 
 @router.post("/login", response_model=TokenResponse)
-def login(payload: LoginRequest, session: Session = Depends(get_session)) -> TokenResponse:
+def login(payload: LoginRequest, session: Session = DependsSession) -> TokenResponse:
     user = get_user_by_email(session, payload.email)
     if user is None or not verify_password(payload.password, user.hashed_password):
         raise InvalidCredentialsError()
