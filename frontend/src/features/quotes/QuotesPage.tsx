@@ -12,7 +12,7 @@ export function QuotesPage() {
   const { items, page, setPage, totalPages, isLoading, error } = useQuotes(search);
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
+    <div className="mx-auto max-w-6xl space-y-6">
       <div>
         <h1 className="text-2xl font-semibold text-foreground">Quotes</h1>
         <p className="mt-1 text-muted-foreground">Explore ideas, not just quotes.</p>
@@ -32,7 +32,7 @@ export function QuotesPage() {
       ) : items.length === 0 ? (
         <p className="text-sm text-muted-foreground">No quotes found.</p>
       ) : (
-        <div className="space-y-4">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-4">
           {items.map((quote) => (
             <QuoteCard key={quote.id} quote={quote} />
           ))}
