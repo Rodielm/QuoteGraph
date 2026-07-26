@@ -1,20 +1,21 @@
 import { Outlet } from "react-router-dom";
 
+import { Button } from "@/components/ui/button";
 import { useAuth } from "@/features/auth/useAuth";
 
 export function AppLayout() {
   const { user, logout } = useAuth();
 
   return (
-    <div className="min-h-screen bg-neutral-50">
-      <header className="flex items-center justify-between border-b border-neutral-200 bg-white px-6 py-4">
-        <span className="text-lg font-semibold text-neutral-900">QuoteGraph</span>
+    <div className="min-h-screen bg-background">
+      <header className="flex items-center justify-between border-b bg-card px-6 py-4">
+        <span className="text-lg font-semibold text-foreground">QuoteGraph</span>
         {user && (
-          <div className="flex items-center gap-4 text-sm text-neutral-600">
+          <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span>{user.email}</span>
-            <button onClick={logout} className="font-medium text-neutral-900 underline">
+            <Button variant="ghost" size="sm" onClick={logout}>
               Log out
-            </button>
+            </Button>
           </div>
         )}
       </header>

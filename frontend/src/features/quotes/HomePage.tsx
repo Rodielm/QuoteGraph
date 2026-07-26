@@ -5,8 +5,8 @@ export function HomePage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-neutral-900">Welcome{user ? `, ${user.email}` : ""}</h1>
-      <p className="mt-2 text-neutral-600">Explore ideas, not just quotes.</p>
+      <h1 className="text-2xl font-semibold text-foreground">Welcome{user ? `, ${user.email}` : ""}</h1>
+      <p className="mt-2 text-muted-foreground">Explore ideas, not just quotes.</p>
     </div>
   );
 }
