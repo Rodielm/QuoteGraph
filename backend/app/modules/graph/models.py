@@ -7,6 +7,7 @@ class GraphNodeData(BaseModel):
     id: str
     label: str
     type: Literal["Quote", "Author", "Topic"]
+    fullText: str | None = None
 
 
 class GraphNode(BaseModel):

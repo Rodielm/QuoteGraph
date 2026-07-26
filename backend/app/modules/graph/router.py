@@ -32,7 +32,12 @@ def get_quote_graph(quote_id: str, session: Session = DependsSession) -> QuoteGr
         author_node_id = f"author:{author['slug']}"
 
         nodes[quote_node_id] = GraphNode(
-            data=GraphNodeData(id=quote_node_id, label=_truncate(quote["text"]), type="Quote")
+            data=GraphNodeData(
+                id=quote_node_id,
+                label=_truncate(quote["text"]),
+                type="Quote",
+                fullText=quote["text"],
+            )
         )
         nodes[author_node_id] = GraphNode(
             data=GraphNodeData(id=author_node_id, label=author["name"], type="Author")

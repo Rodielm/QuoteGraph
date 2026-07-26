@@ -4,6 +4,7 @@ export interface GraphNodeData {
   id: string;
   label: string;
   type: GraphNodeType;
+  fullText?: string;
 }
 
 export interface GraphNode {
