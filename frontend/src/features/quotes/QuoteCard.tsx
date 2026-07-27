@@ -42,7 +42,11 @@ export function QuoteCard({ quote }: { quote: Quote }) {
         {quote.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {quote.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
+              <Badge
+                key={tag}
+                variant="secondary"
+                render={<Link to={`/topics/${encodeURIComponent(tag)}`} />}
+              >
                 {tag}
               </Badge>
             ))}

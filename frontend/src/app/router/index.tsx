@@ -10,6 +10,8 @@ import { CollectionsPage } from "@/features/collections/CollectionsPage";
 import { GraphPage } from "@/features/graph/GraphPage";
 import { FavoritesPage } from "@/features/quotes/FavoritesPage";
 import { QuotesPage } from "@/features/quotes/QuotesPage";
+import { TopicDetailPage } from "@/features/topics/TopicDetailPage";
+import { TopicsPage } from "@/features/topics/TopicsPage";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +34,8 @@ export const router = createBrowserRouter([
           { path: "/collections/:collectionId", element: <CollectionDetailPage /> },
           { path: "/graph/:quoteId", element: <GraphPage /> },
           { path: "/authors/:authorSlug", element: <AuthorPage /> },
+          { path: "/topics", element: <TopicsPage /> },
+          { path: "/topics/:topicName", element: <TopicDetailPage /> },
         ],
       },
     ],
