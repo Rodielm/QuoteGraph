@@ -1,4 +1,5 @@
-import { Share2, Star } from "lucide-react";
+import { NotebookPen, Share2, Star } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Badge } from "@/components/ui/badge";
@@ -6,11 +7,13 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AddToCollectionMenu } from "@/features/collections/AddToCollectionMenu";
 import { useFavorite } from "@/features/quotes/useFavorite";
+import { ReflectionEditor } from "@/features/reflections/ReflectionEditor";
 import { cn } from "@/lib/utils";
 import type { Quote } from "@/shared/types/quote";
 
 export function QuoteCard({ quote }: { quote: Quote }) {
   const { isFavorited, isLoading, toggle } = useFavorite(quote.id);
+  const [isReflecting, setIsReflecting] = useState(false);
 
   return (
     <Card className="h-full">
@@ -19,6 +22,15 @@ export function QuoteCard({ quote }: { quote: Quote }) {
           <p className="line-clamp-4 text-base leading-relaxed text-foreground">"{quote.text}"</p>
           <div className="flex shrink-0 items-center">
             <AddToCollectionMenu quoteId={quote.id} />
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              aria-label={isReflecting ? "Hide reflection" : "Write a reflection"}
+              aria-pressed={isReflecting}
+              onClick={() => setIsReflecting((v) => !v)}
+            >
+              <NotebookPen className="size-4" />
+            </Button>
             <Button
               variant="ghost"
               size="icon-sm"
@@ -52,6 +64,7 @@ export function QuoteCard({ quote }: { quote: Quote }) {
             ))}
           </div>
         )}
+        {isReflecting && <ReflectionEditor quoteId={quote.id} />}
         <Link
           to={`/graph/${quote.id}`}
           className={buttonVariants({ variant: "ghost", size: "sm", className: "mt-auto self-start gap-1.5" })}
