@@ -62,4 +62,4 @@ def list_quotes(
     SKIP $skip LIMIT $limit
     """
     result = session.run(query, **params)
-    return [_to_quote_public(record) for record in result]
+    return [to_quote_public(record) for record in result]
