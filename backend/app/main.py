@@ -15,6 +15,7 @@ async def lifespan(app: FastAPI):
         session.run("CREATE CONSTRAINT quote_external_id_unique IF NOT EXISTS FOR (q:Quote) REQUIRE q.externalId IS UNIQUE")
         session.run("CREATE CONSTRAINT author_slug_unique IF NOT EXISTS FOR (a:Author) REQUIRE a.slug IS UNIQUE")
         session.run("CREATE CONSTRAINT topic_name_unique IF NOT EXISTS FOR (t:Topic) REQUIRE t.name IS UNIQUE")
+        session.run("CREATE CONSTRAINT collection_id_unique IF NOT EXISTS FOR (c:Collection) REQUIRE c.id IS UNIQUE")
     yield
     close_driver()
 

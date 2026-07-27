@@ -18,6 +18,9 @@ export function AppLayout() {
             <Link to="/favorites" className="hover:text-foreground">
               Favorites
             </Link>
+            <Link to="/collections" className="hover:text-foreground">
+              Collections
+            </Link>
           </nav>
         </div>
         {user && (
