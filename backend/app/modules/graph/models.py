@@ -19,6 +19,7 @@ class GraphEdgeData(BaseModel):
     source: str
     target: str
     label: str
+    explanation: str
 
 
 class GraphEdge(BaseModel):

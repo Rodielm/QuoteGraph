@@ -16,6 +16,7 @@ export interface GraphEdgeData {
   source: string;
   target: string;
   label: string;
+  explanation: string;
 }
 
 export interface GraphEdge {
