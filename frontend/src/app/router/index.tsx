@@ -4,6 +4,7 @@ import { AppLayout } from "@/app/layouts/AppLayout";
 import { ProtectedRoute } from "@/app/router/ProtectedRoute";
 import { LoginPage } from "@/features/auth/LoginPage";
 import { RegisterPage } from "@/features/auth/RegisterPage";
+import { AuthorPage } from "@/features/authors/AuthorPage";
 import { CollectionDetailPage } from "@/features/collections/CollectionDetailPage";
 import { CollectionsPage } from "@/features/collections/CollectionsPage";
 import { GraphPage } from "@/features/graph/GraphPage";
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
           { path: "/collections", element: <CollectionsPage /> },
           { path: "/collections/:collectionId", element: <CollectionDetailPage /> },
           { path: "/graph/:quoteId", element: <GraphPage /> },
+          { path: "/authors/:authorSlug", element: <AuthorPage /> },
         ],
       },
     ],

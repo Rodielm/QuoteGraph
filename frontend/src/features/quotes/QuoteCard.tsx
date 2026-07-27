@@ -33,7 +33,12 @@ export function QuoteCard({ quote }: { quote: Quote }) {
             </Button>
           </div>
         </div>
-        <p className="text-sm font-medium text-muted-foreground">— {quote.author.name}</p>
+        <Link
+          to={`/authors/${quote.author.slug}`}
+          className="text-sm font-medium text-muted-foreground hover:text-foreground hover:underline"
+        >
+          — {quote.author.name}
+        </Link>
         {quote.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {quote.tags.map((tag) => (
