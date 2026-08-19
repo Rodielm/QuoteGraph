@@ -16,6 +16,7 @@ backend/.pytest_cache/
 .env
 .env.*
 !.env.example
+!.env.prod.example
 
 # Docker
 docker/**/*.log
@@ -26,3 +27,8 @@ docker/**/*.log
 !**/.vscode/settings.json
 !**/.vscode/extensions.json
 .idea/
+
+# Claude Code
+.claude/
+
+docs/intro.md
