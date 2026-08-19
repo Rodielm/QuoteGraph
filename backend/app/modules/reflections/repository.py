@@ -1,6 +1,7 @@
 from neo4j import Session
 
-from app.modules.reflections.models import ReflectionPublic
+from app.modules.quotes.repository import to_quote_public
+from app.modules.reflections.models import ReflectedQuote, ReflectionPublic
 
 
 def _to_reflection_public(record) -> ReflectionPublic:
@@ -38,6 +39,29 @@ def get_reflection(session: Session, user_id: str, quote_id: str) -> ReflectionP
     )
     record = result.single()
     return _to_reflection_public(record) if record else None
+
+
+def list_reflections(session: Session, user_id: str) -> list[ReflectedQuote]:
+    query = """
+    MATCH (u:User {id: $user_id})-[:WROTE]->(r:Reflection)-[:ABOUT]->(quote:Quote)<-[:WROTE]-(a:Author)
+    OPTIONAL MATCH (quote)-[:HAS_TOPIC]->(t:Topic)
+    WITH quote, a, r, collect(t.name) AS tags
+    RETURN quote.id AS id, quote.text AS text, a.name AS author_name, a.slug AS author_slug, tags,
+           r.text AS reflectionText, r.createdAt AS createdAt, r.updatedAt AS updatedAt
+    ORDER BY r.updatedAt DESC
+    """
+    result = session.run(query, user_id=user_id)
+    return [
+        ReflectedQuote(
+            quote=to_quote_public(record),
+            reflection=ReflectionPublic(
+                text=record["reflectionText"],
+                createdAt=record["createdAt"].iso_format(),
+                updatedAt=record["updatedAt"].iso_format(),
+            ),
+        )
+        for record in result
+    ]
 
 
 def delete_reflection(session: Session, user_id: str, quote_id: str) -> None:
